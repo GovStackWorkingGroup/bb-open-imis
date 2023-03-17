@@ -10,8 +10,23 @@ POST `/api_fhir_r4/login/`
 
 ```json
 {
+  "username": "Admin",
+  "password": "admin123"
+}
+```
+OR
+
+```json
+{
   "username": "RHOS0011",
   "password": "RHOS0011"
+}
+```
+OR
+```json
+{
+  "username": "Admin_fr",
+  "password": "admin123"
 }
 ```
 
@@ -31,17 +46,199 @@ Civil Servant enters citizens personal ID. Citizens personal data is pulled from
 
 POST `/api_fhir_r4/Patient/`
 
-
+Request
 ```json
 {
-  "resourceType": "OperationOutcome",
-  "issue": [
+  "resourceType": "Patient",
+  "extension": [
     {
-      "severity": "fatal",
-      "code": "exception",
-      "details": {
-        "text": "You do not have permission to perform this action."
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-is-head",
+      "valueBoolean": false
+    },
+    {
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-card-issued",
+      "valueBoolean": false
+    },
+    {
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-group-reference",
+      "valueReference": {
+        "reference": "Group/c8e83c86-5868-479a-8c30-b41d16c77cc3",
+        "type": "Group",
+        "identifier": {
+          "type": {
+            "coding": [
+              {
+                "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                "code": "UUID"
+              }
+            ]
+          },
+          "value": "c8e83c86-5868-479a-8c30-b41d16c77cc3"
+        }
       }
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+            "code": "Code"
+          }
+        ]
+      },
+      "value": "111111129"
+    }
+  ],
+  "name": [
+    {
+      "use": "usual",
+      "family": "Manth",
+      "given": [
+        "Aby"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-17",
+  "address": [
+    {
+      "extension": [
+        {
+          "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/address-municipality",
+          "valueString": "Achi"
+        },
+        {
+          "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/address-location-reference",
+          "valueReference": {
+            "reference": "Location/8ed4eb0d-61ae-4022-8b4c-3076a619f957",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "8ed4eb0d-61ae-4022-8b4c-3076a619f957"
+            }
+          }
+        }
+      ],
+      "use": "home",
+      "type": "physical",
+      "text": "Jetset zone 85",
+      "city": "Rachla",
+      "district": "Rapta",
+      "state": "Ultha"
+    }
+  ]
+}
+```
+
+Response
+```json
+{
+  "resourceType": "Patient",
+  "id": "3ea457b2-0c0f-487a-a856-d5f2ffd0ae80",
+  "extension": [
+    {
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-is-head",
+      "valueBoolean": false
+    },
+    {
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-card-issued",
+      "valueBoolean": false
+    },
+    {
+      "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/patient-group-reference",
+      "valueReference": {
+        "reference": "Group/c8e83c86-5868-479a-8c30-b41d16c77cc3",
+        "type": "Group",
+        "identifier": {
+          "type": {
+            "coding": [
+              {
+                "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                "code": "UUID"
+              }
+            ]
+          },
+          "value": "c8e83c86-5868-479a-8c30-b41d16c77cc3"
+        }
+      }
+    }
+  ],
+  "identifier": [
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+            "code": "UUID"
+          }
+        ]
+      },
+      "value": "3ea457b2-0c0f-487a-a856-d5f2ffd0ae80"
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+            "code": "Code"
+          }
+        ]
+      },
+      "value": "111111129"
+    }
+  ],
+  "name": [
+    {
+      "use": "usual",
+      "family": "Manth",
+      "given": [
+        "Aby"
+      ]
+    }
+  ],
+  "gender": "female",
+  "birthDate": "2001-05-17",
+  "address": [
+    {
+      "extension": [
+        {
+          "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/address-municipality",
+          "valueString": "Achi"
+        },
+        {
+          "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/address-location-reference",
+          "valueReference": {
+            "reference": "Location/8ed4eb0d-61ae-4022-8b4c-3076a619f957",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "8ed4eb0d-61ae-4022-8b4c-3076a619f957"
+            }
+          }
+        }
+      ],
+      "use": "temp",
+      "type": "physical",
+      "text": "Jetset zone 85",
+      "city": "Rachla",
+      "district": "Rapta",
+      "state": "Ultha"
     }
   ]
 }
@@ -1368,13 +1565,819 @@ GET `/api_fhir_r4/InsurancePlan/`
 
 ```json
 {
-  "resourceType": "OperationOutcome",
-  "issue": [
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 4,
+  "link": [
     {
-      "severity": "error",
-      "code": "exception",
-      "details": {
-        "text": "Expected a string value"
+      "relation": "self",
+      "url": "http%3A%2F%2Flocalhost%3A8002%2Fapi_fhir_r4%2FInsurancePlan%2F"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "http://localhost:8002/api_fhir_r4/InsurancePlan/cf250507-a9ec-4d45-bb57-7f6bda8d696a",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "cf250507-a9ec-4d45-bb57-7f6bda8d696a",
+        "extension": [
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-max-installments",
+            "valueUnsignedInt": 3
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-start_cycle",
+            "valueString": "01-06"
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-start_cycle",
+            "valueString": "01-11"
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "UUID"
+                }
+              ]
+            },
+            "value": "cf250507-a9ec-4d45-bb57-7f6bda8d696a"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "Code"
+                }
+              ]
+            },
+            "value": "FCTA0001"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                "code": "medical",
+                "display": "Medical"
+              }
+            ]
+          }
+        ],
+        "name": "Fixed Cycle Cover Tahida",
+        "period": {
+          "start": "2017-01-01T00:00:00",
+          "end": "2030-12-31T00:00:00"
+        },
+        "coverageArea": [
+          {
+            "reference": "Location/68753566-9d2e-4cec-936e-4c6bf1968c0d",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "68753566-9d2e-4cec-936e-4c6bf1968c0d"
+            }
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                  "code": "medical"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                      "code": "medical"
+                    }
+                  ]
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 12.0,
+                      "unit": "month"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "period",
+                          "display": "Period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "value": 9999.0,
+                      "unit": "member"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "memberCount",
+                          "display": "Member Count"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "generalCost": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "lumpsum",
+                      "display": "Lumpsum"
+                    }
+                  ]
+                },
+                "groupSize": 6,
+                "cost": {
+                  "value": 0.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "premiumAdult",
+                      "display": "Premium Adult"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 4000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "premiumChild",
+                      "display": "Premium Child"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 4000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "registrationLumpsum",
+                      "display": "Registration Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 1000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "generalAssemblyLumpSum",
+                      "display": "General Assembly Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 1000.0,
+                  "currency": "$"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8002/api_fhir_r4/InsurancePlan/df7a9ed8-f34e-439a-80df-5c187083d542",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "df7a9ed8-f34e-439a-80df-5c187083d542",
+        "extension": [
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-max-installments",
+            "valueUnsignedInt": 3
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-start_cycle",
+            "valueString": "01-06"
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-start_cycle",
+            "valueString": "01-11"
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "UUID"
+                }
+              ]
+            },
+            "value": "df7a9ed8-f34e-439a-80df-5c187083d542"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "Code"
+                }
+              ]
+            },
+            "value": "FCUL0001"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                "code": "medical",
+                "display": "Medical"
+              }
+            ]
+          }
+        ],
+        "name": "Fixed Cycle Cover Ultha",
+        "period": {
+          "start": "2017-01-01T00:00:00",
+          "end": "2030-12-31T00:00:00"
+        },
+        "coverageArea": [
+          {
+            "reference": "Location/75250515-40d7-4c77-bafe-a2c65ffc5a72",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "75250515-40d7-4c77-bafe-a2c65ffc5a72"
+            }
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                  "code": "medical"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                      "code": "medical"
+                    }
+                  ]
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 12.0,
+                      "unit": "month"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "period",
+                          "display": "Period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "value": 9999.0,
+                      "unit": "member"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "memberCount",
+                          "display": "Member Count"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "generalCost": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "lumpsum",
+                      "display": "Lumpsum"
+                    }
+                  ]
+                },
+                "groupSize": 6,
+                "cost": {
+                  "value": 0.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "premiumAdult",
+                      "display": "Premium Adult"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 4000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "premiumChild",
+                      "display": "Premium Child"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 4000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "registrationLumpsum",
+                      "display": "Registration Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 1000.0,
+                  "currency": "$"
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "generalAssemblyLumpSum",
+                      "display": "General Assembly Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 1000.0,
+                  "currency": "$"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8002/api_fhir_r4/InsurancePlan/e2d028c9-db61-4508-8cfa-252f73dc7fbc",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "e2d028c9-db61-4508-8cfa-252f73dc7fbc",
+        "extension": [
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-max-installments",
+            "valueUnsignedInt": 1
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "UUID"
+                }
+              ]
+            },
+            "value": "e2d028c9-db61-4508-8cfa-252f73dc7fbc"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "Code"
+                }
+              ]
+            },
+            "value": "BCTA0001"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                "code": "medical",
+                "display": "Medical"
+              }
+            ]
+          }
+        ],
+        "name": "Basic Cover Tahida",
+        "period": {
+          "start": "2017-01-01T00:00:00",
+          "end": "2030-12-31T00:00:00"
+        },
+        "coverageArea": [
+          {
+            "reference": "Location/68753566-9d2e-4cec-936e-4c6bf1968c0d",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "68753566-9d2e-4cec-936e-4c6bf1968c0d"
+            }
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                  "code": "medical"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                      "code": "medical"
+                    }
+                  ]
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 12.0,
+                      "unit": "month"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "period",
+                          "display": "Period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "value": 6.0,
+                      "unit": "member"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "memberCount",
+                          "display": "Member Count"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "generalCost": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "lumpsum",
+                      "display": "Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 10000.0,
+                  "currency": "$"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://localhost:8002/api_fhir_r4/InsurancePlan/9ad6e81d-ce42-43ba-aa2e-4ec3978352e8",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "9ad6e81d-ce42-43ba-aa2e-4ec3978352e8",
+        "extension": [
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-conversion",
+            "valueReference": {
+              "reference": "InsurancePlan/df7a9ed8-f34e-439a-80df-5c187083d542",
+              "type": "InsurancePlan",
+              "identifier": {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                      "code": "UUID"
+                    }
+                  ]
+                },
+                "value": "df7a9ed8-f34e-439a-80df-5c187083d542"
+              },
+              "display": "FCUL0001"
+            }
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-max-installments",
+            "valueUnsignedInt": 1
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          },
+          {
+            "url": "https://openimis.github.io/openimis_fhir_r4_ig/StructureDefinition/insurance-plan-period",
+            "valueQuantity": {
+              "value": 0.0,
+              "unit": "months"
+            }
+          }
+        ],
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "UUID"
+                }
+              ]
+            },
+            "value": "9ad6e81d-ce42-43ba-aa2e-4ec3978352e8"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                  "code": "Code"
+                }
+              ]
+            },
+            "value": "BCUL0001"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                "code": "medical",
+                "display": "Medical"
+              }
+            ]
+          }
+        ],
+        "name": "Basic Cover Ultha",
+        "period": {
+          "start": "2017-01-01T00:00:00",
+          "end": "2030-12-31T00:00:00"
+        },
+        "coverageArea": [
+          {
+            "reference": "Location/75250515-40d7-4c77-bafe-a2c65ffc5a72",
+            "type": "Location",
+            "identifier": {
+              "type": {
+                "coding": [
+                  {
+                    "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/openimis-identifiers",
+                    "code": "UUID"
+                  }
+                ]
+              },
+              "value": "75250515-40d7-4c77-bafe-a2c65ffc5a72"
+            }
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                  "code": "medical"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/insurance-plan-type",
+                      "code": "medical"
+                    }
+                  ]
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 12.0,
+                      "unit": "month"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "period",
+                          "display": "Period"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "value": {
+                      "value": 6.0,
+                      "unit": "member"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-coverage-benefit-limit",
+                          "code": "memberCount",
+                          "display": "Member Count"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "generalCost": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "system": "https://openimis.github.io/openimis_fhir_r4_ig/CodeSystem/insurance-plan-general-cost-type",
+                      "code": "lumpsum",
+                      "display": "Lumpsum"
+                    }
+                  ]
+                },
+                "cost": {
+                  "value": 10000.0,
+                  "currency": "$"
+                }
+              }
+            ]
+          }
+        ]
       }
     }
   ]
