@@ -7,5 +7,3 @@ db:
   enabled: true
 backend:
   enabled: true
-gateway:
-  enabled: true

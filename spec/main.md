@@ -4,8 +4,6 @@ Minimum set of components:
 
 * Database
 * Backend
-* Gateway
-
 ## [Database](https://github.com/openimis/database_postgresql) 
 
 Backend expects database with predefine schema and data.
@@ -21,11 +19,9 @@ Backend expects communication via Gateway component.
 
 ### API
 
-OpenIMIS uses [FHIR](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard.
+* [FHIR](https://en.wikipedia.org/wiki/Fast_Healthcare_Interoperability_Resources) standard
+* Swagger API [documentation](https://dev-mssql.s1.openimis.org/api/api_fhir_r4/docs/swagger/) 
 
-Consider using an [adapter](https://github.com/GovStackWorkingGroup/specifications/blob/b86b16b85d2e1260d6c7005c49fb76787dc7a7a6/architecture-and-nonfunctional-requirements/6-onboarding.md#61-adapters) for compatibility.
-
-## [Gateway](https://github.com/openimis/openimis-gateway_dkr.git) 
 
 ## Docker images
 
