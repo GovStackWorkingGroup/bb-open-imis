@@ -1561,7 +1561,7 @@ GET `/api_fhir_r4/Patient/`
 
 ## Provide Benefit program details (Product details)
 
-GET `/api_fhir_r4/InsurancePlan/`
+GET `/api_fhir_r4/InsurancePlan`
 
 ```json
 {
