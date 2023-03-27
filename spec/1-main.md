@@ -1,6 +1,6 @@
-# [openIMIS](https://github.com/openimis) 
+# [OpenIMIS](https://github.com/openimis) 
 
-Minimum set of components:
+Minimum set of components for [Sandbox](https://github.com/GovStackWorkingGroup/sandbox):
 
 * Database
 * Backend
