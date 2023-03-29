@@ -1,5 +1,9 @@
 # API
 
+## Demo API
+
+`https://demo.openimis.org/api/api_fhir_r4/login/`
+
 Related [Confluence page](https://govstack-global.atlassian.net/wiki/spaces/DEMO/pages/179601480/Registration#OpenIMIS-resources)
 
 ## User login
@@ -5020,3 +5024,6 @@ GET `/api_fhir_r4/Contract/`
 
 ## Notify payment BB of new payment request
 
+GET `/api_fhir_r4/PaymentNotice/`
+
+POST `/api_fhir_r4/PaymentNotice/`
