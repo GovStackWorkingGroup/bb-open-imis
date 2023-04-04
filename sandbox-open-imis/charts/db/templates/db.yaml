@@ -1,18 +1,51 @@
-apiVersion: rds.services.k8s.aws/v1alpha1
-kind: DBInstance
+apiVersion: v1
+kind: Service
 metadata:
-  name: {{ .Values.db.name }}
-  namespace: {{ .Values.global.namespace }}
+  name: open-imis-db
+  namespace: open-imis
+  labels:
+    app: open-imis-db
 spec:
-  dbSnapshotIdentifier: {{ .Values.db.spec.dbSnapshotIdentifier }}
-  dbInstanceIdentifier: {{ .Values.db.name }}
-  engine: postgres
-  masterUsername: {{ .Values.db.spec.masterUsername }}
-  masterUserPassword:
-    namespace: {{ .Values.global.namespace }}
-    name: {{ .Values.secret.name }}
-    key: password
-  dbSubnetGroupName: default
-  dbInstanceClass: db.t4g.micro
-  allocatedStorage: 20
-  deletionProtection: false
+  ports:
+    - port: 5432
+  selector:
+    app: open-imis
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-imis-db
+  namespace: open-imis
+  labels:
+    app: open-imis-db
+spec:
+  selector:
+    matchLabels:
+      app: open-imis-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: open-imis-db
+    spec:
+      containers:
+        - image: postgres:13-alpine
+          name: open-imis-db
+          env:
+            - name: open-imis-secret
+              valueFrom:
+                secretKeyRef:
+                  name: open-imis-secret
+                  key: password
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: postgres
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres
+          persistentVolumeClaim:
+            claimName: open-imis-pv-claim
