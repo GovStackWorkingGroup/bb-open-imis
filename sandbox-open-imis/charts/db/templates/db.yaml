@@ -13,28 +13,28 @@ spec:
   clusterIP: None
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: open-imis-db
   namespace: open-imis
   labels:
     app: open-imis-db
 spec:
+  replicas: 1
+  serviceName: open-imis-db
   selector:
     matchLabels:
       app: open-imis-db
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: open-imis-db
     spec:
       containers:
-        - image: postgres:13-alpine
+        - image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:latest
           name: open-imis-db
           env:
-            - name: open-imis-secret
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: open-imis-secret
@@ -43,9 +43,14 @@ spec:
             - containerPort: 5432
               name: postgres
           volumeMounts:
-            - name: postgres
+            - name: imis
               mountPath: /var/lib/pgsql/data
-      volumes:
-        - name: postgres
-          persistentVolumeClaim:
-            claimName: open-imis-pv-claim
+  volumeClaimTemplates:
+    - metadata:
+        name: imis
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
