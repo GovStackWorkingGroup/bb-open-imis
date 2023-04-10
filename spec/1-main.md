@@ -29,4 +29,6 @@ Docker images are organized based on [infra repository](https://github.com/GovSt
 
 ## Useful commands
 
-`helm install --debug --dry-run sandbox-open-imis ./sandbox-open-imis/`
+* `helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis`
+
+* `helm install --debug --dry-run sandbox-open-imis ./sandbox-open-imis/`
