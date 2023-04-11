@@ -15,18 +15,42 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Values.db.name }}
-  namespace: {{ .Values.global.namespace }}
+  name: open-imis-db
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: open-imis-db
 spec:
-  dbSnapshotIdentifier: {{ .Values.db.spec.dbSnapshotIdentifier }}
-  dbInstanceIdentifier: {{ .Values.db.name }}
-  engine: postgres
-  masterUsername: {{ .Values.db.spec.masterUsername }}
-  masterUserPassword:
-    namespace: {{ .Values.global.namespace }}
-    name: {{ .Values.secret.name }}
-    key: password
-  dbSubnetGroupName: default
-  dbInstanceClass: db.t4g.micro
-  allocatedStorage: 20
-  deletionProtection: false
+  replicas: 1
+  serviceName: open-imis-db
+  selector:
+    matchLabels:
+      app: open-imis-db
+  template:
+    metadata:
+      labels:
+        app: open-imis-db
+    spec:
+      containers:
+        - image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:latest
+          name: open-imis-db
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: open-imis-secret
+                  key: password
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: imis
+              mountPath: /var/lib/pgsql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: imis
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
