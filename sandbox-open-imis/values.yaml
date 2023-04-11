@@ -1,3 +1,7 @@
+### Global Values if any ###
+global:
+  name: open-imis
+
 ### Sub Charts Specific Values ###
 db:
   enabled: true
