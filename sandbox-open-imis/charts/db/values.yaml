@@ -1,8 +1,9 @@
 dbService:
+  name: db
   port: 5432
 
 dbStatefulset:
-  name: open-imis-db
+  name: db
   spec:
     image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:latest
     mountPath: /var/lib/pgsql/data
