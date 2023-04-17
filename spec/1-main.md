@@ -44,7 +44,11 @@ Log into pod
 * `kubectl exec -it pod/{pod name} -n govstack -- bash`
 
 Get auth token
-* `curl -XPOST -H 'X-Road-Client: DEV/GOV/111/CONSUMER' -H "Content-type: application/json" -d '{ "username": "", "password": "" }' 'http://localhost:8080/r1/DEV/GOV/222/PROVIDER/open-imis/login/'`
+* `curl -XPOST 
+-H 'X-Road-Client: DEV/GOV/111/CONSUMER' 
+-H "Content-type: application/json" 
+-d '{ "username": "", "password": "" }'
+'http://localhost:8080/r1/DEV/GOV/222/PROVIDER/open-imis/login/'`
 
 Get Contract data
 * `curl -XGET
