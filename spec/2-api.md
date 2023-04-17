@@ -12,33 +12,13 @@ User/Civil servant logs in. To create new record the user must have certain role
 
 POST `/api_fhir_r4/login/`
 
-```json
-{
-  "username": "Admin",
-  "password": "admin123"
-}
-```
-OR
-
-```json
-{
-  "username": "RHOS0011",
-  "password": "RHOS0011"
-}
-```
-OR
-```json
-{
-  "username": "Admin_fr",
-  "password": "admin123"
-}
-```
+Credentials can be found in [here](https://openimis.atlassian.net/wiki/spaces/OP/pages/635502598/Demo+Script) and [here](https://openimis.atlassian.net/wiki/spaces/OP/pages/3219128428/Sandbox+Landscape#Demo-Line).
 
 Response
 
 ```json
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwiZXhwIjoxNjc5MDU0MTQxLCJvcmlnSWF0IjoxNjc4OTY3NzQxfQ.P-ZKhTWf7IbuWkWnKknSVhGDprcRq4V10-ged33IU2E",
+  "token": "{token}",
   "exp": 1679054141
 }
 ```

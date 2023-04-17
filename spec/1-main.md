@@ -37,8 +37,18 @@ Port forward
 * `kubectl port-forward service/govstack-xroad-ssc 7000:4000 -n govstack`
 * `kubectl port-forward service/backend 8001:8000 -n open-imis`
 
-Service endpoint* 
-* `http://backend.open-imis.Govstack-sandbox-cluster-dev:8000/api_fhir_r4/login/`
+Service endpoint
+* `http://backend.open-imis.svc.cluster.local:8000/api_fhir_r4`
 
-* `kubectl exec -it pod/govstack-xroad-ssc-7bbc597484-4shf7 -n govstack -- bash`
-* `curl -H "X-Road-Client: DEV/GOV/111/CONSUMER" -d '{"username": "Admin","password": "admin123"}' "http://localhost:8080/r1/DEV/GOV/222/PROVIDER/OpenImisAuth"`
+Log into pod
+* `kubectl exec -it pod/{pod name} -n govstack -- bash`
+
+Get auth token
+* `curl -XPOST -H 'X-Road-Client: DEV/GOV/111/CONSUMER' -H "Content-type: application/json" -d '{ "username": "", "password": "" }' 'http://localhost:8080/r1/DEV/GOV/222/PROVIDER/open-imis/login/'`
+
+Get Contract data
+* `curl -XGET
+-H 'X-Road-Client: DEV/GOV/111/CONSUMER'
+-H "Content-type: application/json" 
+-H "Authorization: Bearer {token}"
+'http://localhost:8080/r1/DEV/GOV/222/PROVIDER/open-imis/Contract/'`
