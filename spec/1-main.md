@@ -35,9 +35,10 @@ Docker images are organized based on [infra repository](https://github.com/GovSt
 Port forward
 * `kubectl port-forward service/govstack-xroad-ssp 8000:4000 -n govstack`
 * `kubectl port-forward service/govstack-xroad-ssc 7000:4000 -n govstack`
+* `kubectl port-forward service/backend 8001:8000 -n open-imis`
 
 Service endpoint* 
-* `http://backend.open-imis.svc.cluster.local:8000/api_fhir_r4/login/`
+* `http://backend.open-imis.Govstack-sandbox-cluster-dev:8000/api_fhir_r4/login/`
 
 * `kubectl exec -it pod/govstack-xroad-ssc-7bbc597484-4shf7 -n govstack -- bash`
 * `curl -H "X-Road-Client: DEV/GOV/111/CONSUMER" -d '{"username": "Admin","password": "admin123"}' "http://localhost:8080/r1/DEV/GOV/222/PROVIDER/OpenImisAuth"`
