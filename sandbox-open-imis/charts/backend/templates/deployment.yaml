@@ -6,12 +6,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: {{ .Values.deployment.name }}
+      app: {{ .Values.deployment.name }}
   replicas: 1
   template:
     metadata:
       labels:
-        run: {{ .Values.deployment.name }}
+        app: {{ .Values.deployment.name }}
     spec:
       containers:
         - name: {{ .Values.deployment.containers.name }}
