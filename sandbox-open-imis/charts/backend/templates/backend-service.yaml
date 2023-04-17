@@ -4,10 +4,10 @@ metadata:
   name: {{ .Values.service.name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.global.name }}
+    app: {{ .Values.service.name }}
 spec:
   ports:
     - port: {{ .Values.service.port }}
+      protocol: TCP
   selector:
-    app: {{ .Values.global.name }}
-  clusterIP: None
+    app: {{ .Values.deployment.name }}
