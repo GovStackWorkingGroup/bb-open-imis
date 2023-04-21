@@ -1,4 +1,7 @@
 # OpenIMIS
+
+This repository is part of the [GovStack Sandbox](https://github.com/GovStackWorkingGroup/sandbox).
+
 The official [documentation](https://github.com/openimis) of the candidate.
 
 Minimum set of components for [Sandbox](https://github.com/GovStackWorkingGroup/sandbox) is:
