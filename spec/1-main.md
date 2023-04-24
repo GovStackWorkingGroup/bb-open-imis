@@ -1,6 +1,7 @@
 # OpenIMIS
 
-This repository is part of the [GovStack Sandbox](https://github.com/GovStackWorkingGroup/sandbox).
+This repository is part of the [GovStack Sandbox](https://github.com/GovStackWorkingGroup/sandbox)
+and an implementation of the [Registration Building Block Specifications](https://github.com/GovStackWorkingGroup/bb-registration).
 
 The official [documentation](https://github.com/openimis) of the candidate.
 
