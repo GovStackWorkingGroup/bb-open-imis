@@ -34,12 +34,12 @@ parameters:
     default: false
 
 workflows:
-  Deloy PaymentHub and Fineract to EKS cluster:
+  Deloy OpenIMIS:
     when: << pipeline.parameters.deploy_allowed >>
     jobs:
       - hold:
           type: approval
-      - deploy-payment-hub-and-fineract:
+      - deploy-open-imis:
           context: aws
           requires:
             - hold
