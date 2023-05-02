@@ -28,14 +28,8 @@ jobs:
              helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis
      
 
-parameters:
-  deploy_allowed:
-    type: boolean
-    default: false
-
 workflows:
-  Deloy OpenIMIS:
-    when: << pipeline.parameters.deploy_allowed >>
+  Deploy OpenIMIS to EKS cluster:
     jobs:
       - hold:
           type: approval
