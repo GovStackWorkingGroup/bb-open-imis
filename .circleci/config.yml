@@ -25,8 +25,8 @@ jobs:
       - run:
           name: Install chart
           command: |
-             helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis
-     
+            helm dependency update ./sandbox-open-imis            
+            helm upgrade --install sandbox-open-imis ./sandbox-open-imis --create-namespace --namespace open-imis
 
 workflows:
   Deploy OpenIMIS to EKS cluster:
