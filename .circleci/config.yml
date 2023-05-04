@@ -33,6 +33,7 @@ jobs:
           role-session-name: "CircleSession"
           session-duration: "1800"
       - aws-eks/update-kubeconfig-with-authenticator:
+          aws-region: AWS_REGION
           cluster-name: Govstack-sandbox
           cluster-authentication-role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
 #      - run:
