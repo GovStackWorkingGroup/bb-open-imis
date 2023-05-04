@@ -35,7 +35,7 @@ jobs:
       - aws-eks/update-kubeconfig-with-authenticator:
           aws-region: eu-west-1
           cluster-name: Govstack-sandbox
-          cluster-authentication-role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
+          cluster-authentication-role-arn: arn:aws:iam::463471358064:role/CircleCIRole
 #      - run:
 #          name: Install chart
 #          command: |
