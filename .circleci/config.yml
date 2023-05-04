@@ -29,9 +29,9 @@ jobs:
       - aws-cli/setup:
           role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
           aws-region: AWS_REGION
-          profile-name: CircleCIRole
-          role-session-name: CircleSession
-          session-duration: '1800'
+          profile-name: "CircleCIRole"
+          role-session-name: "CircleSession"
+          session-duration: "1800"
 #      - aws-eks/update-kubeconfig-with-authenticator:
 #          cluster-name: Govstack-sandbox-cluster-dev
 #          cluster-authentication-role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
@@ -44,4 +44,4 @@ jobs:
           name: Log-into-AWS-ECR
           command: |
             # must use same profile specified in the step above
-            aws ecr get-login-password --profile "OIDC-PROFILE"
+            aws ecr get-login-password --profile "CircleCIRole"
