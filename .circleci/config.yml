@@ -19,7 +19,7 @@ workflows:
 jobs:
   deploy-open-imis:
     environment:
-      AWS_REGION: "eu-west-1"
+      AWS_REGION: eu-west-1
     docker:
       - image: cimg/aws:2023.03
     steps:
@@ -28,7 +28,7 @@ jobs:
           version: 20.10.14
       - aws-cli/setup:
           role-arn: "arn:aws:iam::463471358064:role/CICDPipeline_sandbox-bb-payments_Role_dev"
-          aws-region: "eu-west-1"
+          aws-region: AWS_REGION
 #          profile-name: ${AWS_ROLE}
 #          role-session-name: CircleSession
 #          session-duration: '1800'
@@ -40,7 +40,6 @@ jobs:
 #          command: |
 #            helm dependency update ./sandbox-open-imis
 #            helm upgrade --install sandbox-open-imis ./sandbox-open-imis --create-namespace --namespace open-imis
-
       - run:
           name: Log-into-AWS-ECR
           command: |
