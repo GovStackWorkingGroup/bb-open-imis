@@ -44,7 +44,6 @@ jobs:
             helm install information-mediator information-mediator/
             helm install sandbox-open-imis ./sandbox-open-imis --create-namespace --namespace open-imis
 workflows:
-  say-hello-workflow:
   Deploy project to DEV environment:
     jobs:
 #      - say-hello
@@ -54,4 +53,3 @@ workflows:
           context: aws
 #          requires:
 #            - hold
-
