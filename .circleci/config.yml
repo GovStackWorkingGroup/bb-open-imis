@@ -28,8 +28,8 @@ jobs:
           role-session-name: CircleSession
           session-duration: '1800'
       - aws-eks/update-kubeconfig-with-authenticator:
-          cluster-name: Govstack-sandbox-cluster-dev
-          aws-region: eu-west-1
+          cluster-name: 'Govstack-sandbox-cluster-dev'
+          aws-region: 'eu-west-1'
       - run:
           name: Debug
           command: aws sts get-caller-identity
