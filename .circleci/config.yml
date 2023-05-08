@@ -34,11 +34,6 @@ jobs:
           command: aws sts get-caller-identity
 
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
-
-          # Invoke jobs via workflows
-          # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
           name: Update kubectl
           command: |
             aws eks update-kubeconfig --region eu-central-1 --name Govstack-sandbox-cluster-dev --role-arn arn:aws:iam::463471358064:role/CircleCIRole
