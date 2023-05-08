@@ -40,8 +40,3 @@ jobs:
 #          command: |
 #            helm dependency update ./sandbox-open-imis
 #            helm upgrade --install sandbox-open-imis ./sandbox-open-imis --create-namespace --namespace open-imis
-      - run:
-          name: Log-into-AWS-ECR
-          command: |
-            # must use same profile specified in the step above
-            aws ecr get-login-password --profile "CircleCIRole"
