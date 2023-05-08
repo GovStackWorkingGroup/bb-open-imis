@@ -18,7 +18,7 @@ workflows:
 jobs:
   deploy-open-imis:
     environment:
-      AWS_REGION: AWS_DEFAULT_REGION
+      AWS_REGION: AWS_REGION
     docker:
       - image: cimg/aws:2022.06
     steps:
@@ -27,7 +27,7 @@ jobs:
           version: 20.10.14
       - aws-cli/setup:
           role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
-          aws-region: AWS_DEFAULT_REGION
+          aws-region: AWS_REGION
           profile-name: ${AWS_ROLE}
           role-session-name: CircleSession
           session-duration: "1800"
@@ -35,7 +35,7 @@ jobs:
           cluster-name: "${AWS_CLUSTER_NAME}"
           cluster-authentication-role-arn: arn:aws:iam::${AWS_ACCOUNT}:role/${AWS_ROLE}
       - run:
-          command: echo "AWS_CLUSTER_NAME is ${AWS_CLUSTER_NAME} and AWS_REGION is ${AWS_REGION} and AWS_DEFAULT_REGION is ${AWS_DEFAULT_REGION}"
+          command: echo "AWS_CLUSTER_NAME is ${AWS_CLUSTER_NAME} and AWS_REGION is ${AWS_REGION}"
           when: on_fail
       #      - run:
 #          name: Install chart
