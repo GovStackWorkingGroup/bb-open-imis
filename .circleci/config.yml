@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Install chart
           command: |
-            helm dependency update ./sandobx-open-imis
+            helm dependency update ./sandbox-open-imis
             helm install sandbox-open-imis ./sandbox-open-imis --create-namespace --namespace open-imis
 
 workflows:
