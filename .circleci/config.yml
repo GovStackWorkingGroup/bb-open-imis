@@ -18,7 +18,7 @@ workflows:
 jobs:
   deploy-open-imis:
     environment:
-      AWS_REGION: eu-west-1
+      AWS_REGION: ${AWS_REGION}
     docker:
       - image: cimg/aws:2022.06
     steps:
