@@ -28,7 +28,7 @@ jobs:
           version: 20.10.14
       - aws-cli/setup:
           role-arn: "arn:aws:iam::463471358064:role/CircleCIRole"
-          aws-region: ${AWS_REGION}
+          aws-region: "${AWS_REGION}"
           profile-name: "CircleCIRole"
           role-session-name: "CircleSession"
           session-duration: "1800"
