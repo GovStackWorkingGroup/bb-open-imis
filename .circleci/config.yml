@@ -27,9 +27,9 @@ jobs:
           profile-name: CircleCIRole
           role-session-name: CircleSession
           session-duration: '1800'
-      - aws-eks/update-kubeconfig-with-authenticator:
-          cluster-name: 'Govstack-sandbox-cluster-dev'
-          aws-region: 'eu-west-1'
+#      - aws-eks/update-kubeconfig-with-authenticator:
+#          cluster-name: 'Govstack-sandbox-cluster-dev'
+#          aws-region: 'eu-west-1'
 
       - run:
           name: Update kubectl
