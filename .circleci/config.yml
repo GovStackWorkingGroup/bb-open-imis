@@ -29,6 +29,7 @@ jobs:
           session-duration: '1800'
       - aws-eks/update-kubeconfig-with-authenticator:
           cluster-name: Govstack-sandbox-cluster-dev
+          aws-region: "${AWS_REGION}"
       - run:
           name: Debug
           command: aws sts get-caller-identity
