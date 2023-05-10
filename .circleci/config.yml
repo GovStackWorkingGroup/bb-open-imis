@@ -42,7 +42,7 @@ jobs:
           name: Install chart
           command: |
             helm dependency update ./sandbox-open-imis
-            helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ -f val.yaml 
+            helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis
 
 workflows:
   Deploy project to DEV environment:
