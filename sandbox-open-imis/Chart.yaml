@@ -7,9 +7,9 @@ appVersion: "1.0.0"
 dependencies:
 - name: db
   version: 0.1.0
-  repository: file://../sandbox-open-imis/charts/db
+  repository: file://charts/db
   condition: db.enabled
 - name: backend
   version: 0.1.0
-  repository: file://../sandbox-open-imis/charts/backend
+  repository: file://charts/backend
   condition: backend.enabled
