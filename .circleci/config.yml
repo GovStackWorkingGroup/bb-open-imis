@@ -33,8 +33,14 @@ jobs:
           command: |
             helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace ${CHART_NAMESPACE}
 
+parameters:
+  deploy_allowed:
+    type: boolean
+    default: false
+
 workflows:
   Deploy project to DEV environment:
+    when: << pipeline.parameters.deploy_allowed >>
     jobs:
       - hold:
           type: approval
