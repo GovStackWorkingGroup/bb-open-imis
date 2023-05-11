@@ -13,3 +13,7 @@ GovStack ORB setup [instruction](https://govstack-global.atlassian.net/wiki/spac
 
 More information in [Confluence](https://govstack-global.atlassian.net/wiki/spaces/DEMO/pages/119046145/AWS+Accounts). 
 
+## Workflow instructions 
+ 
+1. Navigate to project in CircleCI.
+2. Approve hold workflow.
