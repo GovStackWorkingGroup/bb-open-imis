@@ -13,7 +13,11 @@ GovStack ORB setup [instruction](https://govstack-global.atlassian.net/wiki/spac
 
 More information in [Confluence](https://govstack-global.atlassian.net/wiki/spaces/DEMO/pages/119046145/AWS+Accounts). 
 
-## Workflow instructions 
- 
-1. Navigate to project in CircleCI.
-2. Approve hold workflow.
+## Circle CI Deploy Workflow:
+To start a workflow, follow these steps:
+
+1. navigate to project in CircleCI
+2. select branch from the dropdown
+3. select "Trigger pipeline" action
+4. Add parameter of type "Boolean", named "deploy_allowed" and set value to "true"
+5. Then trigger the pipeline
