@@ -1,6 +1,6 @@
 ### Global Values if any ###
 global:
-  name: open-imis
+  name: open-imis-db
 
 ### Sub Charts Specific Values ###
 db:

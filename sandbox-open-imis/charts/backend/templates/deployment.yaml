@@ -17,3 +17,16 @@ spec:
         - name: {{ .Values.deployment.containers.name }}
           image: {{ .Values.deployment.containers.image }}
           imagePullPolicy: {{ .Values.deployment.containers.imagePullPolicy }}
+          env:
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_PASSWORD
+              value: "IMISuserP@s"
+            - name: DB_USER
+              value: "IMISuser"
+            - name: DB_NAME
+              value: "IMIS"
+            - name: DB_ENGINE
+              value: "django.db.backends.postgresql"
+            - name: DB_HOST
+              value: "open-imis-db"

@@ -1,12 +1,17 @@
 dbService:
-  name: db
+  name: open-imis-db
   port: 5432
+  postgresPassword: "IMISuserP@s"
+  username: "IMISuser"
+  password: "IMISuserP@s"
+  database:
+    name: "IMIS"
 
 dbStatefulset:
-  name: db
+  name: open-imis-db
   spec:
-    image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:latest
+    image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:0.0.2
     mountPath: /var/lib/pgsql/data
-    storage: 5Gi
+    storage: 2Gi
 secret:
   name: open-imis-secret

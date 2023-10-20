@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.dbService.name }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.global.name }}
+    app: {{ .Values.dbService.name }}
 spec:
   ports:
     - port: {{ .Values.dbService.port }}
