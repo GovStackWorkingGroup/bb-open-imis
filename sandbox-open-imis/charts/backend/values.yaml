@@ -2,9 +2,12 @@ deployment:
   name: backend
   containers:
     name: open-imis-backend
-    image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-backend:0.0.2
+    image: oleksiidn/open-imis-backend:0.0.8
     imagePullPolicy: "Always"
+    port: 8000
 
 service:
   name: backend
   port: 8000
+  type: ClusterIP
+  targetPort: 8000

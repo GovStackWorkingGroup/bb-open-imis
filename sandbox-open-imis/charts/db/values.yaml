@@ -10,7 +10,7 @@ dbService:
 dbStatefulset:
   name: open-imis-db
   spec:
-    image: 463471358064.dkr.ecr.eu-central-1.amazonaws.com/open-imis/dev-db:0.0.2
+    image: oleksiidn/open-imis-db:stock
     mountPath: /var/lib/pgsql/data
     storage: 2Gi
 secret:
