@@ -31,9 +31,12 @@ Docker images are organized based on [infra repository](https://github.com/GovSt
 
 ## Useful commands
 
-* `helm upgrade --install sandbox-open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis`
+* `helm upgrade --install open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis`
 
-* `helm install --debug --dry-run sandbox-open-imis ./sandbox-open-imis/`
+* `helm install open-imis ./sandbox-open-imis/ --create-namespace --namespace open-imis`
+
+* `helm uninstall open-imis --namespace open-imis`
+
 
 ### X-Road connection 
 
